@@ -5,11 +5,12 @@ from awsglue.context import GlueContext
 from awsglue.job import Job
 from pyspark.context import SparkContext
 
-from helpers.data_frame_helpers import *
+from helpers import *
+from helpers.datetime_helpers import *
 from validators.data_validation_checks import *
 
 sc = SparkContext()
-
+print(f"time : {get_current_datetime()}")
 glueContext = GlueContext(sc)
 spark = glueContext.spark_session
 spark.conf.set("spark.sql.parquet.int96RebaseModeInRead", "CORRECTED")
